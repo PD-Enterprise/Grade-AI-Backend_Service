@@ -9,6 +9,10 @@ RUN curl -fsSL https://ollama.ai/install.sh | sh
 # Copy your application
 COPY . .
 
+# Install Python dependencies
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+
 # Start script
 COPY start-docker.sh /start-docker.sh
 RUN chmod +x /start-docker.sh
