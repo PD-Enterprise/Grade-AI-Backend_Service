@@ -10,7 +10,7 @@ RUN curl -fsSL https://ollama.ai/install.sh | sh
 COPY . .
 
 # Install Python dependencies
-RUN python3 -m venv .
+RUN python3 -m venv /env
 RUN pip3 install -r requirements.txt
 
 # Start script
