@@ -1,7 +1,7 @@
 # from flask import Flask, request, Response, jsonify
 import subprocess
 import os
-from flask import Flask
+import flask
 
 # app = Flask(__name__)
 
