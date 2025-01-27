@@ -16,7 +16,7 @@ COPY . .
 # Create a virtual environment and install Python dependencies
 RUN python3 -m venv /env && \
     . /env/bin/activate && \
-    pip install -r requirements.txt
+    pip install Flask
 
 # Start script
 COPY start-docker.sh /start-docker.sh
