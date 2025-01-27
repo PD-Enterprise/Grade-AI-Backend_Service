@@ -6,7 +6,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "This is the background service for an application... You can't access this here..."
+    return jsonify({
+        "status": "healthy",
+        "message": "API is running"
+    })
 
 @app.route("/chat", methods=["POST"])
 def chat():
@@ -23,7 +26,7 @@ def chat():
             capture_output=True,
             text=True
         )
-        reponse = result.stdout.strip()
+        reponse = result.stdout
         return jsonify({"response": reponse}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
