@@ -16,7 +16,6 @@ COPY . .
 # Create a virtual environment and install Python dependencies
 RUN python3 -m venv /env && \
     . /env/bin/activate && \
-    pip install --upgrade pip && \
     pip install -r requirements.txt
 
 # Start script

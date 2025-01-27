@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# Start Ollama in the background
 ollama serve &
-sleep 10
+
+# Run your Flask app
 python3 app.py
