@@ -4,3 +4,6 @@ services:
     env: docker
     buildCommand: docker build -t Grade-AI-Backend_Service .
     startCommand: docker run -p $PORT:$PORT Grade-AI-Backend_Service
+    envVars:
+      - key: PORT
+        value: 10000
