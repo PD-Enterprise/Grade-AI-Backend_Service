@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: Grade-AI-Backend_Service
+    env: docker
+    buildCommand: docker build -t Grade-AI-Backend_Service .
+    startCommand: docker run -p $PORT:$PORT Grade-AI-Backend_Service
