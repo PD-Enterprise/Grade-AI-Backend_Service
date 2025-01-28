@@ -1,39 +1,36 @@
-# from flask import Flask, request, Response, jsonify
+from flask import Flask, request, Response, jsonify
 import subprocess
 import os
-import flask
 
-# app = Flask(__name__)
+app = Flask(__name__)
 
-# @app.route("/")
-# def index():
-#     return jsonify({
-#         "status": "healthy",
-#         "message": "API is running"
-#     })
+@app.route("/")
+def index():
+    return jsonify({
+        "status": "healthy",
+        "message": "API is running"
+    })
 
-# @app.route("/chat", methods=["POST"])
-# def chat():
-#     # Get the prompt from the client
-#     data = request.json
-#     prompt = data.get('prompt')
+@app.route("/chat", methods=["POST"])
+def chat():
+    # Get the prompt from the client
+    data = request.json
+    prompt = data.get('prompt')
 
-#     if not prompt:
-#         return jsonify({"error": "No prompt provided"}), 400
+    if not prompt:
+        return jsonify({"error": "No prompt provided"}), 400
 
-#     try:
-#         result = subprocess.run(
-#             ["ollama", "run", "deepseek-r1:1.5b", prompt],
-#             capture_output=True,
-#             text=True
-#         )
-#         reponse = result.stdout
-#         return jsonify({"response": reponse}), 200
-#     except Exception as e:
-#         return jsonify({"error": str(e)}), 500
+    try:
+        result = subprocess.run(
+            ["ollama", "run", "deepseek-r1:1.5b", prompt],
+            capture_output=True,
+            text=True
+        )
+        reponse = result.stdout
+        return jsonify({"response": reponse}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
-# if __name__== "__main__":
-#     port = os.environ.get("PORT", 5000)
-#     app.run(host="0.0.0.0", port=port)
-
-print("Hello World");
+if __name__== "__main__":
+    port = os.environ.get("PORT", 5000)
+    app.run(host="0.0.0.0", port=port)
