@@ -2,5 +2,5 @@ services:
   - type: web
     name: Grade-AI-Backend_Service
     env: docker
-    buildCommand: docker build -t grade-ai-backend_service .
-    startCommand: docker run -p $PORT:$PORT grade-ai-backend_service
+    buildCommand: docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+    startCommand: docker exec -it ollama ollama run llama3

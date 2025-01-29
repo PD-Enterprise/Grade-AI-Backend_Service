@@ -22,12 +22,12 @@ def chat():
 
     try:
         result = subprocess.run(
-            ["ollama", "run", "deepseek-r1:1.5b", prompt],
+            ["ollama", "run", "deepseek-r1:8b", prompt],
             capture_output=True,
             text=True
         )
-        reponse = result.stdout
-        return jsonify({"response": reponse}), 200
+        response = result.stdout.strip("\u00f0\u0178\u02dc\u0160\n\n")
+        return jsonify({"response": response}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
